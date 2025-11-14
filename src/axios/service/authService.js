@@ -7,6 +7,12 @@ const authService = {
     return data;
   },
 
+  register: async (credentials) => {
+    const { data } = await axiosInstance.post("/customer/create-customer", credentials);
+    localStorage.setItem("accessToken", data.accessToken);
+    return data;
+  },
+
   logout: async () => {
     await axiosInstance.post("/customer/logout");
     localStorage.removeItem("accessToken");
