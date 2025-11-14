@@ -44,7 +44,7 @@ function App() {
           />
 
           <Route
-            path="/setpassword"
+            path="/set-password"
             element={
               // <ProtectedRoute>
               <NewPassword />

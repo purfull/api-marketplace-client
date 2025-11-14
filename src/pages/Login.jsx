@@ -25,6 +25,7 @@ const Login = () => {
     <div className="login-page">
       <div className="login-container">
         <h2>Login</h2>
+          {error && <p className="error-text">{error}</p>}
 
         <form onSubmit={handleSubmit} className="login-form">
           <input
@@ -48,7 +49,6 @@ const Login = () => {
             {loading ? "Logging in..." : "Login"}
           </button>
 
-          {error && <p className="error-text">{error}</p>}
         </form>
 
         <p className="create-account">

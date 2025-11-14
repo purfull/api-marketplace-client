@@ -1,22 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../css/pages/register.scss";
+import { setUserData } from "../store/slice/authSlice";
+import { sendOtp, verifyOtp } from "../store/thunk/otpThunk";
 // import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Modal, Input, Button } from "antd";
+import { useDispatch, useSelector } from "react-redux";
 
 const Register = () => {
+  const dispatch = useDispatch();
+
   const [isOtpPopupOpen, setIsOtpPopupOpen] = useState(false);
   const [otp, setOtp] = useState("");
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+
+  const { loading, error } = useSelector((state) => state.otp);
+  
   const togglePasswordVisibility = () => setShowPassword((prev) => !prev);
 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    password: "",
+    // password: ""
   });
+  useEffect(() => {
+    setOtp(null)
+  }, [isOtpPopupOpen])
 
   const handleChange = (e) => {
     setFormData({
@@ -28,22 +39,46 @@ const Register = () => {
     setIsOtpPopupOpen(true);
   };
 
-  const handleVerifyOtp = () => {
+  const handleVerifyOtp = async (e) => {
+    e.preventDefault();
+
     if (otp.length !== 6) {
       alert("Please enter valid 6 digit OTP");
       return;
     }
 
-    console.log("OTP Submitted: ", otp);
-
-    setIsOtpPopupOpen(false);
-
-    navigate("/set-password");
+    try {
+      const result = await dispatch(
+        verifyOtp({
+          type: "customer-registration",
+          identifier: formData.email,
+          otp,
+        })
+      ).unwrap();
+      if (result?.success) {
+        navigate("/set-password");
+      } else {
+        alert(result?.message);
+      }
+    } catch (err) {
+      // console.error("OTP Error:", err);
+      alert(
+        typeof err === "string" ? err : err.message || "OTP verification failed"
+      );
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Register submitted:", formData);
+    await dispatch(setUserData(formData));
+    dispatch(
+      sendOtp({
+        type: "customer-registration",
+        identifier: formData.email,
+        phone: formData.phone,
+      })
+    );
+    // if (loginUser.fulfilled.match(result)) navigate("/");
     // alert("Account created successfully!");
   };
 
