@@ -7,6 +7,8 @@ import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
+import Register from "./pages/Register";
+import NewPassword from "./pages/NewPassword";
 
 function App() {
   return (
@@ -14,17 +16,47 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={
+          <Route
+            path="/login"
+            element={
               <PublicRoute>
                 <Login />
               </PublicRoute>
-          } />
+            }
+          />
 
           <Route
             path="/dashboard"
             element={
               <ProtectedRoute>
                 <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/register"
+            element={
+              // <ProtectedRoute>
+              <Register />
+              // </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/setpassword"
+            element={
+              // <ProtectedRoute>
+              <NewPassword />
+              // </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/home"
+            element={
+              <ProtectedRoute>
+                <Home />
               </ProtectedRoute>
             }
           />
