@@ -1,11 +1,8 @@
-import "../css/pages/home.scss"
+import React from "react";
+import "../css/pages/home.scss";
 
 const Home = () => {
-    return ( 
-        <div className="home-container">
+  return <div className="home-container">home</div>;
+};
 
-        </div>
-     );
-}
- 
 export default Home;
