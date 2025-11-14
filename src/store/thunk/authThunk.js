@@ -10,6 +10,15 @@ export const loginUser = createAsyncThunk("auth/login", async (credentials, thun
   }
 });
 
+export const registerUser = createAsyncThunk("auth/register", async (credentials, thunkAPI) => {
+  try {
+    const data = await authService.register(credentials);
+    return data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.response?.data?.message || "Failed to create user");
+  }
+});
+
 export const logoutUser = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {
     await authService.logout();
