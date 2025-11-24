@@ -1,0 +1,104 @@
+.verification-docs {
+    display: flex;
+    min-height: 100vh;
+    font-family: "Inter", sans-serif;
+    background: #f6f7fa;
+    color: #1f1f1f;
+  
+    /* ===== SIDEBAR ===== */
+    .sidebar {
+      width: 260px;
+      background: #ffffff;
+      border-right: 1px solid #e5e7eb;
+      padding: 24px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+  
+      h2 {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #272727;
+      }
+  
+      nav {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+  
+        .endpoint-btn {
+          width: 100%;
+          text-align: left;
+          padding: 10px 12px;
+          border-radius: 6px;
+          font-size: 15px;
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          transition: 0.25s ease;
+          color: #444;
+  
+          &:hover {
+            background: #ededed;
+            color: #000;
+          }
+  
+          &.active {
+            background: #dddddd;
+            color: #000;
+            font-weight: 600;
+            border-left: 4px solid #6c6c6c;
+            padding-left: 16px;
+          }
+        }
+      }
+    }
+  
+    /* ===== MAIN CONTENT ===== */
+    .content {
+      flex: 1;
+      padding: 48px 60px;
+      overflow-y: auto;
+  
+      .endpoint-section {
+        margin-bottom: 70px;
+  
+        h3 {
+          font-size: 26px;
+          font-weight: 600;
+          margin-bottom: 6px;
+        }
+  
+        .description {
+          font-size: 15px;
+          color: #6c6f78;
+          margin-bottom: 20px;
+        }
+  
+        pre {
+          padding: 18px;
+          background: #1b1b1b;
+          color: #eaeaea;
+          font-size: 14px;
+          border-radius: 10px;
+          overflow-x: auto;
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+  
+  /* CUSTOM SCROLLBAR */
+  .verification-docs .sidebar::-webkit-scrollbar,
+  .verification-docs .content::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .verification-docs .sidebar::-webkit-scrollbar-thumb,
+  .verification-docs .content::-webkit-scrollbar-thumb {
+    background: #c7ccd5;
+    border-radius: 4px;
+  }
+  

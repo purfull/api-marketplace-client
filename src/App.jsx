@@ -13,6 +13,8 @@ import Forgetpassword from "./pages/ForgetPassword";
 // import Navbar from "./pages/Navbar";
 // import Sidebar from "./pages/Sidebar";
 import Verification from "./pages/Verification.jsx";
+import Location from "./pages/Location.jsx";
+import Form from "./pages/Form.jsx";
 
 function App() {
   return (
@@ -26,7 +28,7 @@ function App() {
             path="/login"
             element={
               // <PublicRoute>
-                <Login />
+              <Login />
               // </PublicRoute>
             }
           />
@@ -62,7 +64,7 @@ function App() {
             path="/home"
             element={
               // <ProtectedRoute>
-                <Home />
+              <Home />
               // </ProtectedRoute>
             }
           />
@@ -77,8 +79,24 @@ function App() {
           <Route
             path="/verification"
             element={
-            //  <ProtectedRoute>
+              //  <ProtectedRoute>
               <Verification />
+              // </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/location"
+            element={
+              //  <ProtectedRoute>
+              <Location />
+              // </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/form"
+            element={
+              //  <ProtectedRoute>
+              <Form />
               // </ProtectedRoute>
             }
           />

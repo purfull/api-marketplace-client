@@ -126,3 +126,87 @@
     }
   }
 }
+
+/* 🌙 DARK MODE — added here */
+body.dark-mode {
+  background: #0d1117;
+  color: #e6edf3;
+}
+
+body.dark-mode .rapid-sidebar {
+  background: #161b22;
+  border-right: 1px solid #30363d;
+}
+
+body.dark-mode .rapid-sidebar .menu-item {
+  color: #e6edf3;
+}
+
+body.dark-mode .rapid-sidebar .menu-item:hover {
+  background: #21262d;
+}
+
+body.dark-mode .rapid-sidebar .menu-item.active {
+  background: #238636;
+  color: #fff;
+}
+
+body.dark-mode .rapid-sidebar .category-title {
+  color: #9ca3af;
+}
+
+body.dark-mode .rapid-sidebar .sidebar-bottom {
+  border-top: 1px solid #30363d;
+}
+
+/* 🌙 Global Dark Theme */
+body.dark-mode {
+  background: #0d1117 !important;
+  color: #e6edf3 !important;
+}
+
+/* container pages */
+body.dark-mode .page-wrapper,
+body.dark-mode .content,
+body.dark-mode main {
+  background: #0d1117;
+  color: #e6edf3;
+}
+
+/* navbar */
+body.dark-mode .rapid-navbar {
+  background: #161b22;
+  border-bottom: 1px solid #30363d;
+}
+body.dark-mode .rapid-navbar .nav-item {
+  color: #e6edf3;
+}
+
+/* cards / sections / blocks */
+body.dark-mode .card,
+body.dark-mode .section,
+body.dark-mode .api-box {
+  background: #161b22;
+  border: 1px solid #30363d;
+  color: #e6edf3;
+}
+
+/* inputs and textareas */
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  color: #e6edf3;
+}
+
+/* links */
+body.dark-mode a {
+  color: #58a6ff;
+}
+body.dark-mode pre,
+body.dark-mode code {
+  background: #0d1117 !important;
+  color: #e6edf3 !important;
+  border: 1px solid #30363d;
+}

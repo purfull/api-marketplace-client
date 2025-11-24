@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../css/pages/verification.scss";
+import "../css/pages/verificationDocs.scss";
 
 const VerificationDocs = () => {
   const [active, setActive] = useState("sendEmail");
