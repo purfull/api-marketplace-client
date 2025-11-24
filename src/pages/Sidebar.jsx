@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../css/pages/sidebar.scss";
-import { FiCompass, FiFolder, FiLayers, FiGrid, FiMoon } from "react-icons/fi";
+import { FiCompass, FiFolder, FiLayers, FiMoon } from "react-icons/fi";
 import { Link } from "react-router-dom";
+
 const Sidebar = () => {
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    const body = document.body;
+    if (darkMode) {
+      body.classList.add("dark-mode");
+    } else {
+      body.classList.remove("dark-mode");
+    }
+  }, [darkMode]);
+
   return (
     <div className="rapid-sidebar">
       <div className="sidebar-top">
@@ -23,12 +35,15 @@ const Sidebar = () => {
       <div className="category-title">Categories</div>
 
       <div className="sidebar-scroll">
-        {/* <div className="menu-item">Verification</div> */}
         <div className="menu-item">
           <Link to="/verification">Verification</Link>
         </div>
-        <div className="menu-item">Location</div>
-        <div className="menu-item">Form</div>
+        <div className="menu-item">
+          <Link to="/location">Location</Link>
+        </div>
+        <div className="menu-item">
+          <Link to="/form">Form</Link>
+        </div>
 
         <div className="menu-item view-all">
           <span>View All Categories</span>
@@ -40,7 +55,16 @@ const Sidebar = () => {
           <FiMoon />
           <span>Switch to Dark View</span>
           <label className="switch">
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              onChange={(e) => {
+                if (e.target.checked) {
+                  document.body.classList.add("dark-mode");
+                } else {
+                  document.body.classList.remove("dark-mode");
+                }
+              }}
+            />
             <span className="slider"></span>
           </label>
         </div>
