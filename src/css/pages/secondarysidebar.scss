@@ -1,0 +1,42 @@
+.verification-sidebar {
+  width: 260px;
+  height: 100vh;
+  border-right: 1px solid #e5e7eb;
+  background: #fff;
+  font-family: "Poppins", sans-serif;
+  padding: 24px;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      font-size: 15px;
+      padding: 12px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.2s;
+      color: #333;
+
+      &:hover {
+        background: #f4f7ff;
+        color: #005cff;
+      }
+    }
+
+    .active {
+      background: #e8f0ff;
+      color: #005cff;
+      font-weight: 600;
+    }
+  }
+}

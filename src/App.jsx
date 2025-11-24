@@ -9,19 +9,25 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
 import Register from "./pages/Register";
 import NewPassword from "./pages/NewPassword";
+import Forgetpassword from "./pages/ForgetPassword";
+// import Navbar from "./pages/Navbar";
+// import Sidebar from "./pages/Sidebar";
+import Verification from "./pages/Verification.jsx";
 
 function App() {
   return (
     <Provider store={store}>
       <Router>
         <Routes>
-          <Route path="/" element={<Home />} />
+          {/* <Route path="/navbar" element={<Navbar />} />
+        <Route path="/sidebar" element={<Sidebar />} /> */}
+          {/* <Route path="/" element={<Home />} /> */}
           <Route
             path="/login"
             element={
-              <PublicRoute>
+              // <PublicRoute>
                 <Login />
-              </PublicRoute>
+              // </PublicRoute>
             }
           />
 
@@ -44,7 +50,7 @@ function App() {
           />
 
           <Route
-            path="/set-password"
+            path="/setpassword"
             element={
               // <ProtectedRoute>
               <NewPassword />
@@ -55,9 +61,25 @@ function App() {
           <Route
             path="/home"
             element={
-              <ProtectedRoute>
+              // <ProtectedRoute>
                 <Home />
-              </ProtectedRoute>
+              // </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/forgetpassword"
+            element={
+              // <ProtectedRoute>
+              <Forgetpassword />
+              // </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/verification"
+            element={
+            //  <ProtectedRoute>
+              <Verification />
+              // </ProtectedRoute>
             }
           />
 

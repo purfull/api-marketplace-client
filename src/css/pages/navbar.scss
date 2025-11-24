@@ -1,0 +1,103 @@
+.navbar {
+  width: 100%;
+  height: 70px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "Poppins", sans-serif;
+}
+
+.logo h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.search-container {
+  width: 40%;
+  position: relative;
+
+  input {
+    width: 100%;
+    padding: 10px 14px 10px 40px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    font-size: 15px;
+    outline: none;
+
+    &:focus {
+      border-color: #6366f1;
+    }
+  }
+
+  .search-icon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #64748b;
+  }
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+
+  .api-btn {
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    background: #3b82f6;
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 6px;
+    transition: 0.3s;
+
+    &:hover {
+      background: #2563eb;
+    }
+  }
+
+  .mail-icon,
+  .profile-icon {
+    font-size: 24px;
+    cursor: pointer;
+    color: #475569;
+
+    &:hover {
+      color: #1e293b;
+    }
+  }
+
+  .profile {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+
+    span {
+      font-size: 15px;
+      font-weight: 500;
+      color: #334155;
+    }
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .search-container {
+    width: 55%;
+  }
+}
+
+@media (max-width: 600px) {
+  .search-container {
+    display: none;
+  }
+}

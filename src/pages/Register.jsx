@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import "../css/pages/register.scss";
 import { setUserData } from "../store/slice/authSlice";
 import { sendOtp, verifyOtp } from "../store/thunk/otpThunk";
-// import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Modal, Input, Button } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -13,28 +12,51 @@ const Register = () => {
   const [isOtpPopupOpen, setIsOtpPopupOpen] = useState(false);
   const [otp, setOtp] = useState("");
   const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState(false);
-
   const { loading, error } = useSelector((state) => state.otp);
-  
-  const togglePasswordVisibility = () => setShowPassword((prev) => !prev);
 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    // password: ""
   });
+
+  const [formErrors, setFormErrors] = useState({});
+
   useEffect(() => {
-    setOtp(null)
-  }, [isOtpPopupOpen])
+    setOtp(null);
+  }, [isOtpPopupOpen]);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+
+    setFormData({ ...formData, [name]: value });
+
+    let errors = { ...formErrors };
+
+    if (name === "name") {
+      if (!value) errors.name = "Name is required";
+      else if (value.length < 3)
+        errors.name = "Name must be at least 3 characters";
+      else delete errors.name;
+    }
+
+    if (name === "email") {
+      if (!value) errors.email = "Email is required";
+      else if (!/\S+@\S+\.\S+/.test(value))
+        errors.email = "Enter a valid email";
+      else delete errors.email;
+    }
+
+    if (name === "phone") {
+      if (!value) errors.phone = "Phone number is required";
+      else if (!/^[0-9]{10}$/.test(value))
+        errors.phone = "Phone must be 10 digits";
+      else delete errors.phone;
+    }
+
+    setFormErrors(errors);
   };
+
   const handleContinue = () => {
     setIsOtpPopupOpen(true);
   };
@@ -55,13 +77,9 @@ const Register = () => {
           otp,
         })
       ).unwrap();
-      if (result?.success) {
-        navigate("/set-password");
-      } else {
-        alert(result?.message);
-      }
+      if (result?.success) navigate("/set-password");
+      else alert(result?.message);
     } catch (err) {
-      // console.error("OTP Error:", err);
       alert(
         typeof err === "string" ? err : err.message || "OTP verification failed"
       );
@@ -70,6 +88,9 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (Object.keys(formErrors).length > 0) return; // prevent continue if form invalid
+
     await dispatch(setUserData(formData));
     dispatch(
       sendOtp({
@@ -78,8 +99,6 @@ const Register = () => {
         phone: formData.phone,
       })
     );
-    // if (loginUser.fulfilled.match(result)) navigate("/");
-    // alert("Account created successfully!");
   };
 
   return (
@@ -96,8 +115,10 @@ const Register = () => {
               placeholder="Enter your name"
               value={formData.name}
               onChange={handleChange}
-              required
             />
+            {formErrors.name && (
+              <span className="input-error">{formErrors.name}</span>
+            )}
           </div>
 
           <div className="form-group">
@@ -108,8 +129,10 @@ const Register = () => {
               placeholder="Enter your email"
               value={formData.email}
               onChange={handleChange}
-              required
             />
+            {formErrors.email && (
+              <span className="input-error">{formErrors.email}</span>
+            )}
           </div>
 
           <div className="form-group">
@@ -120,13 +143,16 @@ const Register = () => {
               placeholder="Enter your phone number"
               value={formData.phone}
               onChange={handleChange}
-              required
             />
+            {formErrors.phone && (
+              <span className="input-error">{formErrors.phone}</span>
+            )}
           </div>
 
           <button
             type="submit"
             className="continue-button"
+            disabled={Object.keys(formErrors).length > 0}
             onClick={handleContinue}
           >
             Continue
@@ -139,7 +165,7 @@ const Register = () => {
           open={isOtpPopupOpen}
           onCancel={() => setIsOtpPopupOpen(false)}
           footer={false}
-          centered // <<< THIS CENTERS THE POPUP ON SCREEN
+          centered
         >
           <div style={{ textAlign: "center" }}>
             <p>Enter the 6-digit OTP sent to your email</p>
