@@ -1,0 +1,10 @@
+.verification-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.verification-docs {
+  display: flex;
+  height: calc(100vh - 60px); // Adjust if navbar height differs
+}

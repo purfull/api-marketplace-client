@@ -10,13 +10,38 @@ const Login = () => {
   const { loading, error } = useSelector((state) => state.auth);
 
   const [credentials, setCredentials] = useState({ email: "", password: "" });
+  const [formErrors, setFormErrors] = useState({});
 
   const handleChange = (e) => {
-    setCredentials({ ...credentials, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+
+    setCredentials({ ...credentials, [name]: value });
+
+    let errors = { ...formErrors };
+
+    if (name === "email") {
+      if (!value) errors.email = "Email is required";
+      else if (!/\S+@\S+\.\S+/.test(value))
+        errors.email = "Enter a valid email";
+      else delete errors.email;
+    }
+
+    if (name === "password") {
+      if (!value) errors.password = "Password is required";
+      else if (value.length < 6)
+        errors.password = "Password must be at least 6 characters";
+      else delete errors.password;
+    }
+
+    setFormErrors(errors);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // prevent login if validation errors exist
+    if (Object.keys(formErrors).length > 0) return;
+
     const result = await dispatch(loginUser(credentials));
     if (loginUser.fulfilled.match(result)) navigate("/");
   };
@@ -25,7 +50,7 @@ const Login = () => {
     <div className="login-page">
       <div className="login-container">
         <h2>Login</h2>
-          {error && <p className="error-text">{error}</p>}
+        {error && <p className="error-text">{error}</p>}
 
         <form onSubmit={handleSubmit} className="login-form">
           <input
@@ -34,6 +59,10 @@ const Login = () => {
             onChange={handleChange}
             placeholder="Email"
           />
+          {formErrors.email && (
+            <span className="input-error">{formErrors.email}</span>
+          )}
+
           <input
             name="password"
             value={credentials.password}
@@ -41,14 +70,20 @@ const Login = () => {
             placeholder="Password"
             type="password"
           />
-          <p className="forgot" onClick={() => navigate("/forgot-password")}>
+          {formErrors.password && (
+            <span className="input-error">{formErrors.password}</span>
+          )}
+
+          <p className="forgot" onClick={() => navigate("/forgotpassword")}>
             Forgot Password?
           </p>
 
-          <button type="submit" disabled={loading}>
+          <button
+            type="submit"
+            disabled={loading || Object.keys(formErrors).length > 0}
+          >
             {loading ? "Logging in..." : "Login"}
           </button>
-
         </form>
 
         <p className="create-account">
