@@ -15,6 +15,8 @@ import Forgetpassword from "./pages/ForgetPassword";
 import Verification from "./pages/Verification.jsx";
 import Location from "./pages/Location.jsx";
 import Form from "./pages/Form.jsx";
+import UserProfile from "./pages/userprofile.jsx";
+
 
 function App() {
   return (
@@ -36,9 +38,9 @@ function App() {
           <Route
             path="/dashboard"
             element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
+              // <ProtectedRoute>
+              <Dashboard />
+              // </ProtectedRoute>
             }
           />
 
@@ -68,6 +70,15 @@ function App() {
               // </ProtectedRoute>
             }
           />
+          <Route
+
+            path="/userprofile"
+            element={
+              <UserProfile />
+            }
+          >
+
+          </Route>
           <Route
             path="/forgetpassword"
             element={
