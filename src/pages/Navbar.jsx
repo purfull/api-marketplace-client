@@ -9,16 +9,16 @@ import { useNavigate } from "react-router-dom";
 const Navbar = () => {
 
   const navigate = useNavigate();
-  
-      const handleuserprofile = async(e) =>{
-        navigate("/userprofile")
 
-    }
+  const handleuserprofile = async (e) => {
+    navigate("/userprofile")
+
+  }
 
   const items = (
     <Menu
       items={[
-        { label: "Profile", key: "1" ,onClick :handleuserprofile },
+        { label: "Profile", key: "1", onClick: handleuserprofile },
         { label: "Settings", key: "2" },
         { type: "divider" },
         { label: "Logout", key: "3" },
