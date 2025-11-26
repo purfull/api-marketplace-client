@@ -9,17 +9,17 @@ const Home = () => {
     {
       heading: "Verification ",
       subheading: "Cybersecurity APIs offer tools for developers to bolster the security of their applications and systems, ",
-      tag: "verify"
+      tag: "browse"
     },
     {
       heading: "Location",
       subheading: "Cybersecurity APIs offer tools for developers to bolster the security of their applications and systems,  that those the package to the all ",
-      tag: "verify"
+      tag: "browse"
     },
     {
       heading: "Form ",
-      subheading: "verifvation chhose to to nothing have the things betwween  that those the package to the all ",
-      tag: "verify"
+      subheading: "Verifvation choose to to nothing have the things betwween  that those the package to the all formsssssssssssssssss",
+      tag: "browse"
     }
   ]
 
@@ -39,16 +39,16 @@ const Home = () => {
 
           <div className="card-main">
 
-            <div className="cards">
+            {/* <div className="cards"> */}
               {cardsitems.map((item, index) => (
-                <div className="cards" key={index}>
+                <div className="card-box" key={index}>
                   <h2>{item.heading}</h2>
                   <p>{item.subheading}</p>
                   <a>{item.tag}</a>
                 </div>
               ))}
 
-            </div>
+            {/* </div> */}
           </div>
         </div>
 
