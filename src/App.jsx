@@ -16,7 +16,7 @@ import Verification from "./pages/Verification.jsx";
 import Location from "./pages/Location.jsx";
 import Form from "./pages/Form.jsx";
 import UserProfile from "./pages/userprofile.jsx";
-
+import Credits from "./pages/credits.jsx";
 
 function App() {
   return (
@@ -70,15 +70,7 @@ function App() {
               // </ProtectedRoute>
             }
           />
-          <Route
-
-            path="/userprofile"
-            element={
-              <UserProfile />
-            }
-          >
-
-          </Route>
+          <Route path="/userprofile" element={<UserProfile />}></Route>
           <Route
             path="/forgetpassword"
             element={
@@ -108,6 +100,15 @@ function App() {
             element={
               //  <ProtectedRoute>
               <Form />
+              // </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/credit"
+            element={
+              //  <ProtectedRoute>
+              <Credits />
               // </ProtectedRoute>
             }
           />
