@@ -5,15 +5,12 @@ import { Menu } from "antd";
 import { FaSearch, FaUserCircle, FaEnvelope } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
-
 const Navbar = () => {
-
   const navigate = useNavigate();
 
   const handleuserprofile = async (e) => {
-    navigate("/userprofile")
-
-  }
+    navigate("/userprofile");
+  };
 
   const items = (
     <Menu
@@ -25,7 +22,6 @@ const Navbar = () => {
       ]}
     />
   );
-
 
   return (
     <nav className="navbar">
@@ -46,6 +42,9 @@ const Navbar = () => {
           API Marketplace
         </a>
 
+        <a href="/credit" className="api-btn">
+          Credits
+        </a>
         <FaEnvelope className="mail-icon" />
 
         <Dropdown overlay={items} trigger={["click"]}>
