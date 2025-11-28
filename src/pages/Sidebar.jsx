@@ -69,6 +69,8 @@ const Sidebar = () => {
           </label>
         </div>
       </div>
+
+      <div className="category-title">Logs History</div>
     </div>
   );
 };

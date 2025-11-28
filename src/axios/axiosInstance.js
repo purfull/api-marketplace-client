@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5500",
-  withCredentials: true, 
+  baseURL: "https://api.purfull.com",
+  withCredentials: true,
 });
 
 axiosInstance.interceptors.request.use((config) => {
@@ -38,7 +38,6 @@ axiosInstance.interceptors.response.use(
         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
 
         return axiosInstance(originalRequest);
-
       } catch (err) {
         console.error("Token refresh failed:", err);
         localStorage.removeItem("accessToken");
@@ -49,6 +48,5 @@ axiosInstance.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-
 
 export default axiosInstance;
