@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5500",
+  // baseURL: "http://localhost:5500",
+  baseURL: "https://api.purfull.com",
   withCredentials: true, 
 });
 
