@@ -19,6 +19,7 @@ import UserProfile from "./pages/userprofile.jsx";
 import Credits from "./pages/credits.jsx";
 import Logs from "./pages/Logs.jsx";
 import Profile from "./pages/Profile.jsx";
+import Support from "./pages/Support";
 
 function App() {
   return (
@@ -128,6 +129,14 @@ function App() {
             element={
               //  <ProtectedRoute>
               <Profile />
+              // </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/support"
+            element={
+              //  <ProtectedRoute>
+              <Support />
               // </ProtectedRoute>
             }
           />

@@ -70,7 +70,9 @@ const Sidebar = () => {
         </div>
       </div>
 
-      <div className="category-title">Logs History</div>
+      <div className="category-title">
+        <Link to="/support">Contact Support?</Link>
+      </div>
     </div>
   );
 };

@@ -42,7 +42,7 @@ const Navbar = () => {
           API Marketplace
         </a>
 
-        <a href="/credit" className="api-btn">
+        <a href="/credits" className="api-btn">
           Credits
         </a>
         <FaEnvelope className="mail-icon" />
