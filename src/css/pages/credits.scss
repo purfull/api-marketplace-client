@@ -1,8 +1,9 @@
 .credits-section {
-  padding: 90px 0;
-  //   background: linear-gradient(to bottom, #0b0b0c, #0b0b0cde, #0b0b0cb4);
-  font-family: "Poppins", sans-serif;
-
+  .layout {
+    padding: 30px 0;
+    //   background: linear-gradient(to bottom, #0b0b0c, #0b0b0cde, #0b0b0cb4);
+    font-family: "Poppins", sans-serif;
+  }
   .container {
     max-width: 1100px;
     margin: auto;
@@ -12,23 +13,31 @@
   .header {
     text-align: center;
     margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 
     h2 {
       font-size: 42px;
       font-weight: 700;
+      display: flex;
+      justify-content: left;
 
-    //   span {
-    //     background: linear-gradient(90deg, #6c5ce7, #00e8d5);
-    //     -webkit-background-clip: text;
-    //     color: transparent;
-    //   }
+      //   span {
+      //     background: linear-gradient(90deg, #6c5ce7, #00e8d5);
+      //     -webkit-background-clip: text;
+      //     color: transparent;
+      //   }
     }
 
     p {
+      display: flex;
+      align-items: flex-start;
+      justify-content: left;
       font-size: 17px;
       color: #9ca3af;
-      max-width: 580px;
-      margin: auto;
+      // max-width: 580px;
+      // margin: auto;
     }
   }
 

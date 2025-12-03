@@ -69,6 +69,10 @@ const Sidebar = () => {
           </label>
         </div>
       </div>
+
+      <div className="category-title">
+        <Link to="/support">Contact Support?</Link>
+      </div>
     </div>
   );
 };
